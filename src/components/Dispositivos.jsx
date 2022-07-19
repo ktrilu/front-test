@@ -119,7 +119,7 @@ export const MainPage = () => {
             <MenuItem value={0}>--</MenuItem>
             {bodegas.map((bodega, id) => (
               <MenuItem value={bodega.BDG_ID} key={id}>
-                {bodega.BDG_NOMBRE} ID= {bodega.BDG_ID}
+                {bodega.BDG_NOMBRE}
               </MenuItem>
             ))}
           </Select>
@@ -137,7 +137,7 @@ export const MainPage = () => {
             <MenuItem value={0}>--</MenuItem>
             {marcas.map((marca, id) => (
               <MenuItem value={marca.MRC_ID} key={id}>
-                {marca.MRC_NOMBRE} ID= {marca.MRC_ID}
+                {marca.MRC_NOMBRE}
               </MenuItem>
             ))}
           </Select>
@@ -155,7 +155,7 @@ export const MainPage = () => {
             <MenuItem value={0}>--</MenuItem>
             {modelos.map((modelo, id) => (
               <MenuItem value={modelo.MDL_ID} key={id}>
-                {modelo.MDL_NOMBRE} ID= {modelo.MDL_ID}
+                {modelo.MDL_NOMBRE}
               </MenuItem>
             ))}
           </Select>
