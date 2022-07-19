@@ -14,6 +14,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
+import Collapse from '@mui/material/Collapse';
 //Services
 import {
   Bodegas,
@@ -38,6 +40,9 @@ export const MainPage = () => {
   const [dispositivos, setDispositivos] = useState([]);
 
   const [nombreDispositivo, setNombreDispositivo] = useState("");
+
+  const [alert, setAlert] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     Bodegas().then(setBodegas);
@@ -67,6 +72,7 @@ export const MainPage = () => {
       setDispositivos
     );
     setModeloSeleccionado(0);
+    console.log(modelos)
   };
 
   const cambioModelo = (event) => {
@@ -84,7 +90,15 @@ export const MainPage = () => {
   }
 
   const ingresar = (event) =>{
-    ingresarDispositivo(nombreDispositivo, bodegaSeleccionada, modeloSeleccionado)
+    if (nombreDispositivo === "" || bodegaSeleccionada === 0 || modeloSeleccionado ===0){
+      setAlert(true);
+      setSuccess(false);
+    }else{
+      setAlert(false);
+      setSuccess(true)
+      ingresarDispositivo(nombreDispositivo, bodegaSeleccionada, modeloSeleccionado);
+    }
+    
   }
 
   return (
@@ -147,6 +161,22 @@ export const MainPage = () => {
           </Select>
         </FormControl>
 
+        <Collapse in={alert}>
+        <Alert severity="error"
+          sx={{ mb: 2 }}
+        >
+          Asegura que los campos "Nombre Dispositivo", "Bodega" y "Modelo" estén seleccionados!
+        </Alert>
+      </Collapse>
+
+      <Collapse in={success}>
+        <Alert
+          sx={{ mb: 2 }}
+        >
+          Dispositivo ingresado!
+        </Alert>
+      </Collapse>
+      
         <Button variant="contained" onClick={ingresar} sx={{ m: 2, width: 200, fontSize: 20}}>Agregar</Button>
       </div>
 

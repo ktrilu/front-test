@@ -77,7 +77,7 @@ export const FiltrarDispositivos = async (id_bodega, id_marca, id_modelo) => {
     if(id_modelo > 0 ){
         dispositivosFiltrados = dispositivosFiltrados.filter(dispositivo => dispositivo.MDL_ID === id_modelo);
     }
-    console.log(dispositivosFiltrados)
+    //console.log(dispositivosFiltrados)
     return dispositivosFiltrados;
 
 }
